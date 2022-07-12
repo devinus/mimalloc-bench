@@ -618,7 +618,7 @@ function run_test {  # <test>
     redis)
       # https://redis.io/docs/reference/optimization/benchmarks/
       redis_tail="1"
-      run_test_cmd "redis" "$redis_dir/redis-benchmark -r 1000000 -n 100000 -q -P 16 lpush a 1 2 3 4 5 lrange a 1 5";;
+      run_test_cmd "redis" "$redis_dir/redis-benchmark -h "${REDIS_HOST:-127.0.0.1}" -p "${REDIS_PORT:-6379}" -r 1000000 -n 100000 -q -P 16 lpush a 1 2 3 4 5 lrange a 1 5";;
     rocksdb)
       run_test_cmd "rocksdb" "$rocksdb_dir/db_bench --benchmarks=fillrandom";;
     alloc-test)
